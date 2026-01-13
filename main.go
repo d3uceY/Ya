@@ -24,6 +24,28 @@ func loadShortcuts() (map[string]string, error) {
 	return shortcuts, nil
 }
 
+func addShortcut(name, command string) error {
+	shortcuts, err := loadShortcuts()
+
+	if err != nil {
+		return err
+	}
+
+	shortcuts[name] = command
+
+	data, err := json.MarshalIndent(shortcuts, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	err = os.WriteFile("shortcuts.json", data, 0644)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func main() {
 	shortcuts, err := loadShortcuts()
 	if err != nil {
@@ -52,7 +74,8 @@ func main() {
 			fmt.Println("Usage: pronto add <shortcut> <command>")
 			os.Exit(1)
 		} else {
-
+			addShortcut(shortcutName, command)
+			return
 		}
 	}
 
