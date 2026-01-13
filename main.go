@@ -8,7 +8,6 @@ import (
 	"pronto/utils"
 )
 
-
 func main() {
 	shortcuts, err := utils.LoadShortcuts()
 	if err != nil {
@@ -48,7 +47,7 @@ func main() {
 	command, exists := shortcuts[shortcut]
 
 	if !exists {
-		fmt.Printf("Unknown shortcut: %s\n", shortcut)
+		fmt.Printf("Unknown shortcut: %s\n", shortcut+"\n to add a new shortcut use: pronto add <shortcut> '<command>'")
 		os.Exit(1)
 	}
 

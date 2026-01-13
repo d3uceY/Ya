@@ -1,14 +1,47 @@
 package utils
 
 import (
-    "os"
-   "encoding/json"
+	"encoding/json"
+	"os"
+	"path/filepath"
 )
 
+func getAppDataDir() (string, error) {
+	dir, err := os.UserConfigDir()
+	if err != nil {
+		return "", err
+	}
+
+	appDir := filepath.Join(dir, "proton/data")
+	err = os.MkdirAll(appDir, 0755)
+
+	return appDir, err
+}
 
 func LoadShortcuts() (map[string]string, error) {
-	data, err := os.ReadFile("shortcuts.json")
+
+	appDir, err := getAppDataDir()
 	if err != nil {
+		panic(err)
+	}
+
+	shortCutpath := filepath.Join(appDir, "shortcuts.json")
+
+	data, err := os.ReadFile(shortCutpath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			// Create file with empty JSON object
+			emptyShortcuts := map[string]string{}
+			data, err := json.MarshalIndent(emptyShortcuts, "", "  ")
+			if err != nil {
+				return nil, err
+			}
+			err = os.WriteFile(shortCutpath, data, 0644)
+			if err != nil {
+				return nil, err
+			}
+			return emptyShortcuts, nil
+		}
 		return nil, err
 	}
 
@@ -35,7 +68,13 @@ func AddShortcut(name, command string) error {
 		return err
 	}
 
-	err = os.WriteFile("shortcuts.json", data, 0644)
+	appDir, err := getAppDataDir()
+	if err != nil {
+		return err
+	}
+
+	shortCutpath := filepath.Join(appDir, "shortcuts.json")
+	err = os.WriteFile(shortCutpath, data, 0644)
 	if err != nil {
 		return err
 	}
@@ -44,8 +83,8 @@ func AddShortcut(name, command string) error {
 }
 
 func IsInvalidString(s string) bool {
-    if len(s) == 0 {
-        return true
-    }
-    return false
+	if len(s) == 0 {
+		return true
+	}
+	return false
 }
