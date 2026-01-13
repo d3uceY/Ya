@@ -1,4 +1,8 @@
-# ya
+<div align="center">
+    <img src="assets/ya.png" alt="ya logo" />
+    <h1>Ya</h1>
+</div>
+
 
 A lightweight command-line shortcut manager for Windows. Execute your frequently used PowerShell commands with simple, memorable shortcuts.
 
