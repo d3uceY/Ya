@@ -58,7 +58,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	cmd := exec.Command("powershell", "-Command", command)
+	cmd := exec.Command("powershell", "-NoProfile", "-NonInteractive", "-Command", command)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
