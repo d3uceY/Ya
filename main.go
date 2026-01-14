@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"os/exec"
+	"runtime"
 
 	"github.com/fatih/color"
 
@@ -61,7 +62,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	cmd := exec.Command("powershell", "-NoProfile", "-NonInteractive", "-Command", command)
+	// Detect OS and use appropriate shell
+	var cmd *exec.Cmd
+	if runtime.GOOS == "windows" {
+		cmd = exec.Command("powershell", "-NoProfile", "-NonInteractive", "-Command", command)
+	} else {
+		// Linux, macOS, and other Unix-like systems
+		cmd = exec.Command("bash", "-c", command)
+	}
+
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin

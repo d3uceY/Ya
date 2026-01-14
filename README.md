@@ -15,14 +15,17 @@ A lightweight command-line shortcut manager for Windows. Execute your frequently
 
 ## Platform Support
 
-Currently supports **Windows only**.
+Supports **Windows**, **Linux**, and **macOS**.
+
+- Windows: Uses PowerShell for command execution
+- Linux/macOS: Uses Bash for command execution
 
 ## Installation
 
 ### Prerequisites
 
 - Go 1.25.5 or higher
-- Windows operating system
+- Windows (PowerShell), Linux, or macOS (Bash)
 
 ### Build from Source
 
@@ -30,8 +33,15 @@ Currently supports **Windows only**.
 2. Navigate to the project directory
 3. Build the executable:
 
+**Windows:**
 ```powershell
 go build -o ya.exe .
+```
+
+**Linux/macOS:**
+```bash
+go build -o ya .
+chmod +x ya
 ```
 
 4. (Optional) Add the executable to your PATH for system-wide access
