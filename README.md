@@ -1,6 +1,6 @@
 <div align="center">
     <img src="assets/ya.png" alt="ya logo" />
-    <h1>Ya</h1>
+    <h1>Ya - CLI</h1>
 </div>
 
 
@@ -14,6 +14,7 @@ A lightweight command-line shortcut manager for Windows. Execute your frequently
 - 💾 Persistent storage of shortcuts in your user config directory
 - ⚡ Fast command execution via PowerShell
 - 📝 Easy-to-use CLI interface
+- 🖥️ **GUI Available:** Prefer a graphical interface? Check out [Ya-GUI](https://github.com/d3uceY/Ya-GUI) - a modern desktop application for managing your shortcuts visually
 
 ## Platform Support
 
@@ -48,7 +49,73 @@ chmod +x ya
 
 4. (Optional) Add the executable to your PATH for system-wide access
 
+### Adding to PATH (Recommended)
+
+To use `ya` from any directory in your terminal, you need to add it to your system's PATH environment variable.
+
+#### Windows
+
+1. **Move the executable** to a permanent location (e.g., `C:\Program Files\Ya\ya.exe`)
+2. **Add to PATH:**
+   - Press `Win + X` and select "System"
+   - Click "Advanced system settings" on the right
+   - Click "Environment Variables"
+   - Under "User variables" or "System variables", find and select "Path"
+   - Click "Edit"
+   - Click "New" and add the directory path (e.g., `C:\Program Files\Ya`)
+   - Click "OK" on all windows
+3. **Restart your terminal** for changes to take effect
+4. Verify by running: `ya help`
+
+**Quick method (PowerShell as Administrator):**
+```powershell
+# Create a directory for Ya
+New-Item -Path "C:\Program Files\Ya" -ItemType Directory -Force
+# Move ya.exe to this directory
+Move-Item .\ya.exe "C:\Program Files\Ya\ya.exe"
+# Add to PATH
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Ya", "User")
+```
+
+#### Linux/macOS
+
+1. **Move the executable** to a directory in your PATH:
+   ```bash
+   # Option 1: System-wide (requires sudo)
+   sudo mv ya /usr/local/bin/
+   
+   # Option 2: User-only
+   mkdir -p ~/.local/bin
+   mv ya ~/.local/bin/
+   ```
+
+2. **Ensure the directory is in your PATH** (if using `~/.local/bin`):
+   ```bash
+   # For Bash (~/.bashrc)
+   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+   source ~/.bashrc
+   
+   # For Zsh (~/.zshrc)
+   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+3. **Verify installation:**
+   ```bash
+   ya help
+   ```
+
 ## Usage
+
+### Managing Shortcuts with GUI
+
+For a more visual and user-friendly experience, you can use [Ya-GUI](https://github.com/d3uceY/Ya-GUI) - a desktop application that provides:
+- Visual shortcut management
+- Real-time search and filtering
+- Inline editing capabilities
+- Modern, intuitive interface
+
+All shortcuts created in Ya-GUI are fully compatible with the Ya CLI and vice versa.
 
 ### View All Shortcuts
 
