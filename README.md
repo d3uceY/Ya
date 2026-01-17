@@ -6,6 +6,11 @@
 
 A lightweight command-line shortcut manager for Windows. Execute your frequently used PowerShell commands with simple, memorable shortcuts.
 
+<div align="center">
+    ![preview-video](https://github.com/user-attachments/assets/4eb2a7b5-e6a5-4286-b643-0eae972344dc)
+</div>
+
+
 **Name Origin:** "Ya" comes from the Spanish word meaning "right now" - reflecting the instant execution of your commands.
 
 ## ⬇️ Download
