@@ -135,7 +135,7 @@ func main() {
 			os.Exit(1)
 		}
 		color.Green("Shortcut Imported `%s`", os.Args[2])
-
+		return
 	// Remove command
 	case "remove":
 		if len(os.Args) < 3 {
@@ -157,7 +157,7 @@ func main() {
 	}
 
 	if !exists {
-		color.Red("Unknown shortcut: %s\n to add a new shortcut use: ya add <shortcut> '<command>'", shortcut)
+		fmt.Printf("Unknown shortcut: %s\n to add a new shortcut use: ya add <shortcut> '<command>'", yellow(shortcut))
 		os.Exit(1)
 	}
 
