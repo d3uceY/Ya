@@ -51,6 +51,26 @@ func main() {
 		color.Green("To remove a shortcut use: ya remove <shortcut>")
 		return
 
+	case "search", "--search":
+		if len(os.Args) > 3 {
+			color.Red("usage: ya search <shortcut>")
+		}
+        
+		return
+
+	// Show command
+	case "show":
+		if len(os.Args) > 3 {
+			color.Red("usage: ya show <shortcut>")
+		}
+		command, err := utils.GetShortcut(os.Args[2])
+		if err != nil {
+			color.Red(err.Error())
+			os.Exit(1)
+		}
+		color.Green("Shortcut `%s` maps to command: %s", os.Args[2], command)
+		return
+
 	// Add command
 	case "add":
 		if len(os.Args) < 4 {
@@ -65,6 +85,7 @@ func main() {
 		}
 		utils.AddShortcut(shortcutName, command)
 		return
+
 	// Remove command
 	case "remove":
 		if len(os.Args) < 3 {

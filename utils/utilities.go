@@ -2,14 +2,18 @@ package utils
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
+// i go need explain myself? 😭
 func GetAppVersion() string {
 	return "v0.2.1"
 }
 
+// i think you should know what this one does
 func getAppDataDir() (string, error) {
 	dir, err := os.UserConfigDir()
 	if err != nil {
@@ -22,6 +26,7 @@ func getAppDataDir() (string, error) {
 	return appDir, err
 }
 
+// this shpould load the shortcuts from the JSON file and return them as a map.
 func LoadShortcuts() (map[string]string, error) {
 
 	appDir, err := getAppDataDir()
@@ -56,6 +61,41 @@ func LoadShortcuts() (map[string]string, error) {
 	}
 
 	return shortcuts, nil
+}
+
+// this function retrieves the command associated with a given shortcut name.
+func GetShortcut(shortcut string) (string, error) {
+	shortcuts, err := LoadShortcuts()
+
+	if err != nil {
+		return "", err
+	}
+
+	command, exists := shortcuts[shortcut]
+
+	if !exists {
+		return "", fmt.Errorf("shortcut `%s` not found", shortcut)
+	}
+	return command, nil
+}
+
+// this function searches for the shortcut
+func SearchShortcut(searchParam string) (map[string]string, error) {
+	shortcuts, err := LoadShortcuts()
+	if err != nil {
+		return nil, err
+	}
+
+	filteredShortcuts := map[string]string{}
+	search := strings.ToLower(searchParam)
+
+	for key, command := range shortcuts {
+		if strings.Contains(strings.ToLower(key), search) ||
+			strings.Contains(strings.ToLower(command), search) {
+			filteredShortcuts[key] = command
+		}
+	}
+	return filteredShortcuts, nil
 }
 
 func AddShortcut(name, command string) error {
