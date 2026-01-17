@@ -12,7 +12,7 @@ import (
 
 // i go need explain myself? 😭
 func GetAppVersion() string {
-	return "v0.2.1"
+	return "v0.3.0"
 }
 
 // i think you should know what this one does
@@ -162,7 +162,7 @@ func IsInvalidString(s string) bool {
 }
 
 func ImportShortcuts(path string) error {
-  
+
 	data, err := os.ReadFile(path)
 
 	if err != nil {
