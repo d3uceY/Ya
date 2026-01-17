@@ -125,6 +125,16 @@ Move-Item .\ya.exe "C:\Program Files\Ya\ya.exe"
 
 ## Usage
 
+## New Features (v0.2.1+)
+
+- 🔍 **Search Shortcuts:** Quickly find shortcuts by name or command.
+- 👁️ **Show Shortcut:** Display the command mapped to a specific shortcut.
+- 📥 **Import Shortcuts:** Import a set of shortcuts from a JSON file.
+- 🗑️ **Remove Shortcut:** Delete a shortcut by name.
+- ➕ **Pass Extra Arguments:** You can now pass additional arguments to your shortcuts at runtime.
+
+See below for usage examples!
+
 ### Managing Shortcuts with GUI
 
 For a more visual and user-friendly experience, you can use [Ya-GUI](https://github.com/d3uceY/Ya-GUI) - a desktop application that provides:
@@ -143,6 +153,14 @@ Display all available shortcuts:
 ya help
 ```
 
+### List All Shortcuts
+
+```powershell
+ya list
+```
+
+Shows all shortcuts and their mapped commands.
+
 ### Add a New Shortcut
 
 Create a new shortcut with a name and PowerShell command:
@@ -159,6 +177,14 @@ ya add dev 'cd C:\Projects\MyApp; npm run dev'
 ya add ports 'netstat -ano | findstr LISTENING'
 ```
 
+### Remove a Shortcut
+
+```powershell
+ya remove <shortcut-name>
+```
+
+Deletes the specified shortcut.
+
 ### Execute a Shortcut
 
 Run a saved shortcut:
@@ -174,6 +200,39 @@ ya gs       # Runs: git status
 ya dev      # Runs: cd C:\Projects\MyApp; npm run dev
 ya ports    # Runs: netstat -ano | findstr LISTENING
 ```
+
+#### Pass Extra Arguments to Shortcuts
+
+You can append extra arguments when running a shortcut. These will be added to the end of the command.
+
+```powershell
+ya gcm "Initial commit"
+# Runs: git commit -m "Initial commit"
+```
+
+### Show a Shortcut's Command
+
+```powershell
+ya show <shortcut-name>
+```
+
+Displays the command mapped to the shortcut.
+
+### Search for Shortcuts
+
+```powershell
+ya search <search-term>
+```
+
+Finds shortcuts whose name or command contains the search term.
+
+### Import Shortcuts from a File
+
+```powershell
+ya import <file-path>
+```
+
+Imports shortcuts from a JSON file (should be a map of shortcut names to commands).
 
 ## How It Works
 
