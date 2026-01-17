@@ -40,18 +40,14 @@ func main() {
 			color.Yellow(" - %s :", key)
 			color.Green(" %s", cmd)
 		}
-		color.Green("\nTo add a new shortcut use: ya add <shortcut> '<command>'")
-		color.Green("To remove a shortcut use: ya remove <shortcut>")
 		return
 
 	// Help command
 	case "help", "--help", "-h":
-		color.Green("Available shortcuts:")
-		for key, cmd := range shortcuts {
-			color.Yellow(" - %s :", key)
-			color.Green(" %s", cmd)
-		}
 		color.Green("\nTo add a new shortcut use: ya add <shortcut> '<command>'")
+		color.Green("To remove a shortcut use: ya remove <shortcut>\n")
+		color.Green("To list all shortcuts : ya list")
+		color.Green("To show version : ya version\n")
 		color.Green("To remove a shortcut use: ya remove <shortcut>")
 		return
 
