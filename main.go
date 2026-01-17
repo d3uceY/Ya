@@ -1,18 +1,24 @@
 package main
 
 import (
+	"fmt"
+	"github.com/fatih/color"
 	"os"
 	"os/exec"
 	"runtime"
 	"strings"
 
-	"github.com/fatih/color"
-
 	"ya/utils"
 )
 
 func main() {
+
+	// colored output
+	green := color.New(color.FgGreen).SprintFunc()
+	yellow := color.New(color.FgYellow).SprintFunc()
+
 	shortcuts, err := utils.LoadShortcuts()
+
 	if err != nil {
 		color.Red("Error loading shortcuts:", err)
 		os.Exit(1)
@@ -22,7 +28,6 @@ func main() {
 		color.Red("Usage: ya <shortcut> \n for shortcuts use: ya help")
 		os.Exit(1)
 	}
-
 
 	shortcut := os.Args[1]
 
@@ -45,8 +50,7 @@ func main() {
 		}
 		color.Green("Available shortcuts:")
 		for key, cmd := range shortcuts {
-			color.Yellow(" - %s :", key)
-			color.Green(" %s", cmd)
+			fmt.Printf("%s %s\n", yellow(" - %s :", key), green(" %s", cmd))
 		}
 		return
 
@@ -56,11 +60,18 @@ func main() {
 			color.Red("usage: ya help")
 			os.Exit(1)
 		}
-		color.Green("\nTo add a new shortcut use: ya add <shortcut> '<command>'")
-		color.Green("To remove a shortcut use: ya remove <shortcut>\n")
-		color.Green("To list all shortcuts : ya list")
-		color.Green("To show version : ya version\n")
-		color.Green("To remove a shortcut use: ya remove <shortcut>")
+
+		fmt.Println("\n--- Ya Usage ---")
+
+		fmt.Printf("%s %s\n", yellow("To add a new shortcut use:"), green("ya add <shortcut> <command>"))
+		fmt.Printf("%s %s\n", yellow("To remove a shortcut use:"), green("ya remove <shortcut>"))
+		fmt.Printf("%s %s\n", yellow("To list all shortcuts:"), green("ya list"))
+		fmt.Printf("%s %s\n", yellow("To show version:"), green("ya version"))
+		fmt.Printf("%s %s\n", yellow("To import shortcuts use:"), green("ya import <file-path>"))
+		fmt.Printf("%s %s\n", yellow("To search shortcuts use:"), green("ya search <shortcut>"))
+		fmt.Printf("%s %s\n", yellow("To show shortcuts use:"), green("ya show <shortcut>"))
+
+		fmt.Println()
 		return
 
 	// Search command
@@ -112,7 +123,7 @@ func main() {
 		utils.AddShortcut(shortcutName, command)
 		return
 
-    // import shortcuts
+		// import shortcuts
 	case "import":
 		if len(os.Args) < 3 {
 			color.Red("Usage: ya import '<file-path>'")
