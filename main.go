@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
-	"strings"
 
 	"ya/utils"
 )
@@ -152,8 +151,18 @@ func main() {
 	// if i cannot pass more arguments to the shortcut e.g git commit -m (extra args)
 	// so hear it is
 	if len(os.Args) > 2 {
-		args := os.Args[2:]
-		command += " " + strings.Join(args, " ")
+		fmt.Println(os.Args)
+		for index, value := range os.Args {
+			if !(index <= 1) {
+				if value != "-m" {
+					if os.Args[index-1] == "-m" {
+						command += " " + fmt.Sprintf("'%s'", value)
+					} else {
+						command += " " + value
+					}
+				}
+			}
+		}
 	}
 
 	if !exists {
