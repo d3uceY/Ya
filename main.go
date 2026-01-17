@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 
 	"github.com/fatih/color"
 
@@ -60,6 +61,14 @@ func main() {
 	}
 
 	command, exists := shortcuts[shortcut]
+
+	// i added this because i was wondering how i would have been using this
+	// if i cannot pass more arguments to the shortcut
+	// so hear it is
+	if len(os.Args) > 2 {
+		args := os.Args[2:]
+		command += " " + strings.Join(args, " ")
+	}
 
 	if !exists {
 		color.Red("Unknown shortcut: %s\n to add a new shortcut use: ya add <shortcut> '<command>'", shortcut)
