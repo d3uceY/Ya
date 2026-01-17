@@ -33,7 +33,8 @@ func main() {
 	case "help":
 		color.Green("Available shortcuts:")
 		for key := range shortcuts {
-			color.Green(" - %s : %s", key, shortcuts[key])
+			color.Yellow(" - %s :", key)
+			color.Green("   %s", shortcuts[key])
 		}
 		color.Green("\nTo add a new shortcut use: ya add <shortcut> '<command>'")
 		color.Green("To remove a shortcut use: ya remove <shortcut>")
