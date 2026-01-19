@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"runtime"
 
-	"ya/utils"
+	"github.com/d3uceY/Ya-CLI/utils"
 )
 
 func main() {
