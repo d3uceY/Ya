@@ -32,11 +32,11 @@ A lightweight command-line shortcut manager for Windows. Execute your frequently
 
 ## Features
 
-- 🚀 Create custom shortcuts for long or complex commands
-- 💾 Persistent storage of shortcuts in your user config directory
-- ⚡ Fast command execution via PowerShell
-- 📝 Easy-to-use CLI interface
-- 🖥️ **GUI Available:** Prefer a graphical interface? Check out [Ya-GUI](https://github.com/d3uceY/Ya-GUI) - a modern desktop application for managing your shortcuts visually
+- Create custom shortcuts for long or complex commands
+- Persistent storage of shortcuts in your user config directory
+- Fast command execution via PowerShell
+- Easy-to-use CLI interface
+- **GUI Available:** Prefer a graphical interface? Check out [Ya-GUI](https://github.com/d3uceY/Ya-GUI) - a modern desktop application for managing your shortcuts visually
 
 ## Platform Support
 
@@ -131,11 +131,11 @@ Move-Item .\ya.exe "C:\Program Files\Ya\ya.exe"
 
 ## New Features (v0.3.0+)
 
-- 🔍 **Search Shortcuts:** Quickly find shortcuts by name or command.
-- 👁️ **Show Shortcut:** Display the command mapped to a specific shortcut.
-- 📥 **Import Shortcuts:** Import a set of shortcuts from a JSON file.
-- 🗑️ **Remove Shortcut:** Delete a shortcut by name.
-- ➕ **Pass Extra Arguments:** You can now pass additional arguments to your shortcuts at runtime.
+- **Search Shortcuts:** Quickly find shortcuts by name or command.
+- **Show Shortcut:** Display the command mapped to a specific shortcut.
+- **Import Shortcuts:** Import a set of shortcuts from a JSON file.
+- **Remove Shortcut:** Delete a shortcut by name.
+- **Pass Extra Arguments:** You can now pass additional arguments to your shortcuts at runtime.
 <img width="550" height="198" alt="image" src="https://github.com/user-attachments/assets/666e368d-b43c-4723-9027-8a26ff9b371e" />
 
 See below for usage examples!
