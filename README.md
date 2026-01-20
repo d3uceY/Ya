@@ -19,15 +19,19 @@ A lightweight command-line shortcut manager for Windows. Execute your frequently
 ### Ya CLI v0.3.0 — Multi-Platform Support
 
 #### 🪟 Windows
-[![Download for Windows](https://img.shields.io/badge/Download-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/d3uceY/Ya-CLI/releases/download/v0.3.0/ya-windows.zip)
+
+[![Download for Windows](https://img.shields.io/badge/Download-Windows-0078D4?style=for-the-badge\&logo=windows\&logoColor=white)](https://github.com/d3uceY/Ya-CLI/releases/latest)
 
 #### 🍎 macOS
-[![Download for macOS](https://img.shields.io/badge/Download-macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/d3uceY/Ya-CLI/releases/download/v0.3.0/ya-macos.zip)
+
+[![Download for macOS](https://img.shields.io/badge/Download-macOS-000000?style=for-the-badge\&logo=apple\&logoColor=white)](https://github.com/d3uceY/Ya-CLI/releases/latest)
 
 #### 🐧 Linux
-[![Download for Linux](https://img.shields.io/badge/Download-Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/d3uceY/Ya-CLI/releases/download/v0.3.0/ya-linux.zip)
 
-> Windows • macOS • Linux | Version 0.3.0
+[![Download for Linux](https://img.shields.io/badge/Download-Linux-FCC624?style=for-the-badge\&logo=linux\&logoColor=black)](https://github.com/d3uceY/Ya-CLI/releases/latest)
+
+> Windows • macOS • Linux | Always the latest version
+
 
 
 ## Features
